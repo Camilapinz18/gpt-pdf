@@ -8,6 +8,7 @@ from pyproj import Proj, Transformer
 import pandas as pd
 import pickle
 import streamlit as st
+from dotenv import load_dotenv
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chat_models import ChatOpenAI
 from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
@@ -34,7 +35,7 @@ os.makedirs(VECTORSTORE_DIR, exist_ok=True)
 
 # set the page title and icon
 st.set_page_config(page_title="Curadur-IA San Isidro", page_icon=":house:")
-OPENAI_API_KEY="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"
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 def get_pdf_text(pdf_docs):
     text = ""
